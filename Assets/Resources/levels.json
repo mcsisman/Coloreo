@@ -1,0 +1,471 @@
+{
+  "levels": [
+    {
+      "levelNo": 1,
+      "colors": [28, 36, 0, 0],
+      "noOfColors": 2,
+      "variance": 2,
+      "winConds": ["xx = 32", "yy = 32"],
+      "allowedColors": [1, 2],
+      "changeableColor": 2,
+      "moves": 10
+    },
+    {
+      "levelNo": 2,
+      "colors": [24, 40, 0, 0],
+      "noOfColors": 2,
+      "variance": 2,
+      "winConds": ["xx = 32", "yy = 32"],
+      "allowedColors": [1, 2],
+      "changeableColor": 2,
+      "moves": 5
+      
+    },
+    {
+      "levelNo": 3,
+      "colors": [16, 32, 0, 0, 0, 16],
+      "noOfColors": 3,
+      "variance": 2,
+      "winConds": ["xx = 24", "yy = 24"],
+      "allowedColors": [1, 2, 6],
+      "changeableColor": 2,
+      "moves": 5
+    },
+    {
+      "levelNo": 4,
+      "colors": [16, 32, 0, 0, 8, 8],
+      "noOfColors": 4,
+      "variance": 2,
+      "winConds": ["xx = 24", "yy = 24"],
+      "allowedColors": [1, 2, 5, 6],
+      "changeableColor": 2
+    },
+    {
+      "levelNo": 5,
+      "colors": [18, 28, 18, 0],
+      "noOfColors": 3,
+      "variance": 2,
+      "winConds": ["xx = 20", "yy = 24", "zz = 20"],
+      "allowedColors": [1, 2, 3],
+      "changeableColor": 3
+    },
+    {
+      "levelNo": 6,
+      "colors": [16, 24, 16, 0, 0, 8],
+      "noOfColors": 4,
+      "variance": 2,
+      "winConds": ["xx = 18", "yy = 20", "zz = 18"],
+      "allowedColors": [1, 2, 3, 6],
+      "changeableColor": 3
+    },
+    {
+      "levelNo": 7,
+      "colors": [8, 28, 16, 0, 6, 6],
+      "noOfColors": 5,
+      "variance": 2,
+      "winConds": ["xx = 15", "yy = 22", "zz = 15"],
+      "allowedColors": [1, 2, 3, 5, 6],
+      "changeableColor": 3
+    },
+    {
+      "levelNo": 8,
+      "colors": [12, 40, 12, 0],
+      "noOfColors": 3,
+      "variance": 4,
+      "winConds": ["xx = 16", "yy = 32", "zz = 16"],
+      "allowedColors": [1, 2, 3],
+      "changeableColor": 3
+    },
+    {
+      "levelNo": 9,
+      "colors": [15, 17, 15, 17],
+      "noOfColors": 4,
+      "variance": 0,
+      "winConds": ["xx = 16", "yy = 16", "zz = 16", "tt = 16"],
+      "allowedColors": [1, 2, 3, 4],
+      "changeableColor": 4
+    },
+    {
+      "levelNo": 10,
+      "colors": [12, 13, 17, 18, 4, 0],
+      "noOfColors": 5,
+      "variance": 2,
+      "winConds": ["xx = 14", "yy = 14", "zz = 16", "tt = 16"],
+      "allowedColors": [1, 2, 3, 4, 5],
+      "changeableColor": 4
+    },
+    {
+      "levelNo": 11,
+      "colors": [6, 22, 6, 22, 0, 8],
+      "noOfColors": 5,
+      "variance": 2,
+      "winConds": ["xx = 15", "yy = 13", "zz = 15", "tt = 13"],
+      "allowedColors": [1, 2, 3, 4, 6],
+      "changeableColor": 4,
+      "moves": 15
+    },
+    {
+      "levelNo": 12,
+      "colors": [15, 25, 24, 0],
+      "noOfColors": 3,
+      "variance": 3,
+      "winConds": ["xx = yy"],
+      "allowedColors": [1, 2, 3],
+      "changeableColor": 3,
+      "moves": 8
+    },
+    {
+      "levelNo": 13,
+      "colors": [11, 26, 15, 0, 4, 8],
+      "noOfColors": 5,
+      "variance": 3,
+      "winConds": ["xx = yy"],
+      "allowedColors": [1, 2, 3, 5, 6],
+      "changeableColor": 3
+    },
+    {
+      "levelNo": 14,
+      "colors": [62, 2, 0, 0],
+      "noOfColors": 2,
+      "variance": 0,
+      "winConds": ["xx = 63", "yy = 1"],
+      "allowedColors": [1, 2],
+      "changeableColor": 2
+    },
+    {
+      "levelNo": 15,
+      "colors": [30, 2, 0, 0, 8, 24],
+      "noOfColors": 4,
+      "variance": 0,
+      "winConds": ["xx = 31", "yy = 1"],
+      "allowedColors": [1, 2, 5, 6],
+      "changeableColor": 2
+    },
+    {
+      "levelNo": 16,
+      "colors": [12, 22, 30, 0],
+      "noOfColors": 3,
+      "variance": 2,
+      "winConds": ["xx > yy", "yy > zz"],
+      "allowedColors": [1, 2, 3],
+      "changeableColor": 3
+    },
+    {
+      "levelNo": 17,
+      "colors": [8, 21, 29, 0, 6, 0],
+      "noOfColors": 4,
+      "variance": 2,
+      "winConds": ["xx > yy", "yy > zz"],
+      "allowedColors": [1, 2, 3, 5],
+      "changeableColor": 3
+    },
+    
+    {
+      "levelNo": 18,
+      "colors": [11, 11, 42, 0],
+      "noOfColors": 3,
+      "variance": 4,
+      "winConds": ["xx + yy > zz"],
+      "allowedColors": [1, 2, 3],
+      "changeableColor": 3,
+      "moves": 5
+    },
+    {
+      "levelNo": 19,
+      "colors": [7, 7, 36, 0, 7, 7],
+      "noOfColors": 5,
+      "variance": 2,
+      "winConds": ["xx + yy > zz"],
+      "allowedColors": [1, 2, 3, 5, 6],
+      "changeableColor": 3,
+      "moves": 5
+    },
+    {
+      "levelNo": 20,
+      "colors": [19, 19, 26, 0],
+      "noOfColors": 3,
+      "variance": 4,
+      "winConds": ["xx + yy < zz"],
+      "allowedColors": [1, 2, 3],
+      "changeableColor": 3
+    },
+    {
+      "levelNo": 21,
+      "colors": [16, 16, 16, 0, 0, 16],
+      "noOfColors": 4,
+      "variance": 4,
+      "winConds": ["xx + yy < zz"],
+      "allowedColors": [1, 2, 3, 6],
+      "changeableColor": 3
+    },
+    {
+      "levelNo": 22,
+      "colors": [8, 8, 38, 0, 6, 4],
+      "noOfColors": 5,
+      "variance": 2,
+      "winConds": ["xx + yy = zz"],
+      "allowedColors": [1, 2, 3, 5, 6],
+      "changeableColor": 3
+    },
+    {
+      "levelNo": 23,
+      "colors": [10, 20, 34, 0],
+      "noOfColors": 3,
+      "variance": 2,
+      "winConds": ["xx = 16", "yy > zz"],
+      "allowedColors": [1, 2, 3],
+      "changeableColor": 3
+    },
+    {
+      "levelNo": 24,
+      "colors": [10, 17, 29, 0, 4, 4],
+      "noOfColors": 5,
+      "variance": 2,
+      "winConds": ["xx = 16", "yy > zz"],
+      "allowedColors": [1, 2, 3, 5, 6],
+      "changeableColor": 3
+    },
+    {
+      "levelNo": 25,
+      "colors": [11, 22, 31, 0],
+      "noOfColors": 3,
+      "variance": 2,
+      "winConds": ["xx > yy", "yy = zz"],
+      "allowedColors": [1, 2, 3],
+      "changeableColor": 3
+    },
+    {
+      "levelNo": 26,
+      "colors": [12, 19, 27, 0, 0, 8],
+      "noOfColors": 4,
+      "variance": 2,
+      "winConds": ["yy = xx", "xx > zz"],
+      "allowedColors": [1, 2, 3, 6],
+      "changeableColor": 3
+    },
+    {
+      "levelNo": 27,
+      "colors": [10, 27, 27, 0],
+      "noOfColors": 3,
+      "variance": 2,
+      "winConds": ["xx < 5"],
+      "allowedColors": [1, 2, 3],
+      "changeableColor": 3
+    },
+    {
+      "levelNo": 28,
+      "colors": [8, 18, 18, 0, 4 ,16],
+      "noOfColors": 5,
+      "variance": 2,
+      "winConds": ["xx < 5"],
+      "allowedColors": [1, 2, 3, 5, 6],
+      "changeableColor": 3
+    },
+    {
+      "levelNo": 29,
+      "colors": [24, 11, 29, 0],
+      "noOfColors": 3,
+      "variance": 2,
+      "winConds": ["xx < 16", "yy > 16", "zz = 32"],
+      "allowedColors": [1, 2, 3],
+      "changeableColor": 3
+    },
+    {
+      "levelNo": 30,
+      "colors": [22, 10, 24, 0, 4, 4],
+      "noOfColors": 5,
+      "variance": 1,
+      "winConds": ["xx < 16", "yy > 16", "zz = 28"],
+      "allowedColors": [1, 2, 3, 5, 6],
+      "changeableColor": 3,
+      "moves": 15
+    },
+    {
+      "levelNo": 31,
+      "colors": [33, 19, 12, 0],
+      "noOfColors": 3,
+      "variance": 2,
+      "winConds": ["xx = 40", "yy < 16", "zz < 10"],
+      "allowedColors": [1, 2, 3],
+      "changeableColor": 3,
+      "moves": 15
+    },
+    {
+      "levelNo": 32,
+      "colors": [40, 17, 3, 0, 0, 4],
+      "noOfColors": 4,
+      "variance": 2,
+      "winConds": ["xx = 40", "yy < 16", "zz > 10"],
+      "allowedColors": [1, 2, 3, 6],
+      "changeableColor": 3
+    },
+    {
+      "levelNo": 33,
+      "colors": [15, 15, 34, 0],
+      "noOfColors": 3,
+      "variance": 2,
+      "winConds": ["xx > zz", "yy > zz"],
+      "allowedColors": [1, 2, 3],
+      "changeableColor": 3,
+      "moves": 8
+    },
+    {
+      "levelNo": 34,
+      "colors": [22, 22, 8, 0, 6, 6],
+      "noOfColors": 5,
+      "variance": 2,
+      "winConds": ["zz > xx", "zz > yy"],
+      "allowedColors": [1, 2, 3, 5, 6],
+      "changeableColor": 3,
+      "moves": 8
+    },
+    {
+      "levelNo": 35,
+      "colors": [60, 4, 0, 0],
+      "noOfColors": 2,
+      "variance": 2,
+      "winConds": ["xx < 32", "yy > 32"],
+      "allowedColors": [1, 2],
+      "changeableColor": 2
+    },
+    {
+      "levelNo": 36,
+      "colors": [56, 4, 0, 0, 4, 0],
+      "noOfColors": 3,
+      "variance": 2,
+      "winConds": ["xx < 30", "yy > 30"],
+      "allowedColors": [1, 2, 5],
+      "changeableColor": 2
+    },
+    {
+      "levelNo": 37,
+      "colors": [11, 1, 0, 0, 4, 48],
+      "noOfColors": 4,
+      "variance": 0,
+      "winConds": ["xx < 6", "yy > 6"],
+      "allowedColors": [1, 2, 5, 6],
+      "changeableColor": 2
+    },
+    {
+      "levelNo": 38,
+      "colors": [60, 4, 0, 0],
+      "noOfColors": 2,
+      "variance": 2,
+      "winConds": ["xx = 32", "yy = 32"],
+      "allowedColors": [1, 2],
+      "changeableColor": 2
+    },
+    {
+      "levelNo": 39,
+      "colors": [56, 4, 0, 0, 4, 0],
+      "noOfColors": 3,
+      "variance": 2,
+      "winConds": ["xx = 30", "yy = 30"],
+      "allowedColors": [1, 2, 5],
+      "changeableColor": 2
+    },
+    {
+      "levelNo": 40,
+      "colors": [11, 1, 0, 0, 4, 48],
+      "noOfColors": 4,
+      "variance": 0,
+      "winConds": ["xx = 6", "yy = 6"],
+      "allowedColors": [1, 2, 5, 6],
+      "changeableColor": 2
+    },
+    
+    {
+      "levelNo": 41,
+      "colors": [15, 21, 15, 13],
+      "noOfColors": 4,
+      "variance": 2,
+      "winConds": ["xx = 18", "yy = 18", "zz = 18"],
+      "allowedColors": [1, 2, 3, 4],
+      "changeableColor": 4
+    },
+    {
+      "levelNo": 42,
+      "colors": [15, 21, 15, 9, 4, 0],
+      "noOfColors": 5,
+      "variance": 2,
+      "winConds": ["xx = 16", "yy = 16", "zz = 16"],
+      "allowedColors": [1, 2, 3, 4, 5],
+      "changeableColor": 4
+    },
+    {
+      "levelNo": 43,
+      "colors": [13, 25, 11, 15],
+      "noOfColors": 4,
+      "variance": 1,
+      "winConds": ["xx = 18", "yy < 18", "zz > 18"],
+      "allowedColors": [1, 2, 3, 4],
+      "changeableColor": 4
+    },
+    
+    {
+      "levelNo": 44,
+      "colors": [6, 25, 11, 18, 4 , 0],
+      "noOfColors": 5,
+      "variance": 1,
+      "winConds": ["xx = 12", "yy < 18", "zz > 18"],
+      "allowedColors": [1, 2, 3, 4, 5],
+      "changeableColor": 4
+    },
+    {
+      "levelNo": 45,
+      "colors": [64, 0, 0, 0],
+      "noOfColors": 2,
+      "variance": 0,
+      "winConds": ["yy > xx"],
+      "allowedColors": [1, 2],
+      "changeableColor": 2
+    },
+    {
+      "levelNo": 46,
+      "colors": [48, 4, 0, 0, 6, 6],
+      "noOfColors": 4,
+      "variance": 2,
+      "winConds": ["yy > xx"],
+      "allowedColors": [1, 2, 5, 6],
+      "changeableColor": 2
+    },
+    {
+      "levelNo": 47,
+      "colors": [64, 0, 0, 0, 0, 0],
+      "noOfColors": 4,
+      "variance": 0,
+      "winConds": ["yy > xx", "zz > xx", "tt > xx" ],
+      "allowedColors": [1, 2, 3, 4],
+      "changeableColor": 4
+    },
+    {
+      "levelNo": 48,
+      "colors": [30, 0, 0, 30, 4, 0],
+      "noOfColors": 5,
+      "variance": 0,
+      "winConds": ["yy > xx", "zz > tt"],
+      "allowedColors": [1, 2, 3, 4, 5],
+      "changeableColor": 4
+    },
+    {
+      "levelNo": 49,
+      "colors": [30, 30, 2, 2, 0, 0],
+      "noOfColors": 4,
+      "variance": 0,
+      "winConds": ["xx = zz", "yy = tt"],
+      "allowedColors": [1, 2, 3, 4],
+      "changeableColor": 4
+    },
+    {
+      "levelNo": 49,
+      "colors": [16, 0, 0, 16, 4, 28],
+      "noOfColors": 6,
+      "variance": 0,
+      "winConds": ["xx = yy", "zz = tt"],
+      "allowedColors": [1, 2, 3, 4, 5, 6],
+      "changeableColor": 4,
+      "moves": 20
+    }
+    
+  ]
+}

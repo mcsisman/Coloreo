@@ -1,0 +1,473 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.UI;
+using TMPro;
+using static Table;
+using static MovesText;
+using static BallCountText;
+using static WinCondText;
+
+public class TouchHandler : MonoBehaviour
+{
+    [SerializeField] private TextMeshProUGUI movesText;
+    [SerializeField] private GameObject successModal;
+    [SerializeField] private GameObject failModal;
+    [SerializeField] private GameObject unlockLevelModal;
+    [SerializeField] private GameObject lastLevelModal;
+    private Collider currentball;
+    private int currentSelectedRow;
+    private int currentSelectedColumn;
+    public int selectionWidth = 3;
+    private Color selectionColor;
+    private MovesText mt;
+    public int[] colorCount;
+    public bool touchDisabled = false;
+    public WinCondText winCondText;
+    public TextMeshProUGUI winCondUIText;
+    private BallCountText ballCountText;
+    public TextMeshProUGUI text;
+    private bool failModalHidden = false;
+
+    Table t;
+    // Start is called before the first frame update
+    void Start(){
+        winCondText = GameObject.Find("WinCondText").GetComponent<WinCondText>();
+        mt = GameObject.Find("MovesText").GetComponent<MovesText>();
+        ballCountText = GameObject.Find("BallCountText").GetComponent<BallCountText>();
+        
+        selectionColor = new Color(166 / 255f, 148/255f, 148/255f, .4f);
+        t = new Table();
+
+        Button btn = GetComponent<Button>();
+        btn = GameObject.Find("NextLevelButton-DEBUG").GetComponent<Button>();
+        
+        btn.onClick.AddListener(LevelSucceed);
+    }
+
+    // Update is called once per frame
+    void Update()
+    {   
+        TouchListenerForBalls();
+    }
+    void TouchListenerForBalls() {
+        if (touchDisabled) {
+            return;
+        }
+        foreach (Touch touch in Input.touches) {
+            Ray ray = Camera.main.ScreenPointToRay(Input.touches[0].position);
+            RaycastHit hit; 
+
+            if (touch.phase == TouchPhase.Began) {
+                if (Physics.Raycast(ray, out hit)) {
+                    currentSelectedRow = hit.collider.GetComponent<BallInformation>().row;
+                    currentSelectedColumn = hit.collider.GetComponent<BallInformation>().column;
+                    currentball = hit.collider;
+                    AddSelectionBackground();
+                }
+            }
+            if (touch.phase == TouchPhase.Moved) {
+                if (Physics.Raycast(ray, out hit)) {
+                    RemoveSelectionBackground();
+                    currentSelectedRow = hit.collider.GetComponent<BallInformation>().row;
+                    currentSelectedColumn = hit.collider.GetComponent<BallInformation>().column;
+                    currentball = hit.collider;
+                    AddSelectionBackground();
+                } else {
+                    RemoveSelectionBackground();
+                }
+            }
+
+            if (touch.phase == TouchPhase.Ended) {
+
+                if (Physics.Raycast(ray, out hit)) {
+                    currentball = hit.collider;
+                    RemoveSelectionBackground();
+
+                    // Get row-column data of selected ball
+                    GameObject lm = GameObject.Find("LevelManager");
+                    
+                    lm.GetComponent<LevelManager>().moves = lm.GetComponent<LevelManager>().moves - 1;
+                    mt.UpdateMovesText(movesText);
+                    ChangeBallColors(selectionWidth, currentSelectedRow, currentSelectedColumn);
+                    ParallelCoroutine();
+                    
+                    
+                } else {
+
+                    RemoveSelectionBackground();
+                }
+            }
+        }
+    }
+    public bool CheckWinConditions(GameObject lm) {
+        string[] winConds = lm.GetComponent<LevelManager>().lvl.winConds;
+        string[] colors = new string[winConds.Length];
+        int result = 0;
+        for(int i = 0; i < winConds.Length; i++) {
+            if (CheckCondition(winConds[i], lm)) {
+                colors[i] = "#4BDD85";
+            } else {
+                result++;
+                colors[i] = "#EA7272";
+            }
+        }
+        
+        winCondText.SetWinConditionText(winCondUIText, colors);
+        return result == 0;
+    }
+    public bool CheckCondition(string winCond, GameObject lm) {
+        string[] cond = winCond.Split(' ');
+        int leftHandSide = 0;
+        int[] colorCount = lm.GetComponent<LevelManager>().colorCount;
+        int rightHandSide;
+        int rightHandSideIndex;
+        int result;
+        result = GetColorCount(cond[cond.Length - 1]);
+
+        // if the right hand side is a not a circle, write the number to rightHandSideIndex
+        if ( result == -1){
+            rightHandSideIndex = int.Parse(cond[cond.Length - 1]);
+            rightHandSide = rightHandSideIndex;
+        }
+        else{
+            rightHandSideIndex = result;
+            rightHandSide = colorCount[rightHandSideIndex];
+        }
+        // If there is a plus on the left hand side
+        for ( int i = 0; i < (cond.Length - 1)/2; i++) {
+            leftHandSide = leftHandSide + colorCount[GetColorCount(cond[2*i])];
+        }
+        if(cond[cond.Length - 2] == "<") {
+            return leftHandSide < rightHandSide;
+        }
+        if (cond[cond.Length - 2] == ">") {
+            return leftHandSide > rightHandSide;
+        }
+        if (cond[cond.Length - 2] == "=") {
+            return leftHandSide == rightHandSide;
+        }
+
+        return false;
+    }
+    public int GetColorCount(string colorCode) {
+        if ( colorCode == "xx") {
+            return 0;
+        }
+        else if (colorCode == "yy") {
+            return 1;
+        }
+        else if (colorCode == "zz") {
+            return 2;
+        }
+        else if (colorCode == "tt") {
+            return 3;
+        } else {
+            return -1;
+        }
+    }
+    void RemoveSelectionBackground() {
+        for (int i = currentSelectedRow - (selectionWidth - 1) / 2; i <= currentSelectedRow + (selectionWidth - 1) / 2; i++) {
+            for (int j = currentSelectedColumn - (selectionWidth - 1) / 2; j <= currentSelectedColumn + (selectionWidth - 1) / 2; j++) {
+                GameObject tmp;
+                tmp = GameObject.Find("cell" + i + "," + j + "(Clone)");
+
+                // If the selected ball is not a black circle
+                if (tmp != null) {
+                     tmp.GetComponent<SpriteRenderer>().color = new Color(0.9058824f, 0.9058824f, 0.945098f, 0);
+                }
+            }
+        }
+    }
+
+    void AddSelectionBackground() {
+        for (int i = currentSelectedRow - (selectionWidth - 1) / 2; i <= currentSelectedRow + (selectionWidth - 1) / 2; i++) {
+            for (int j = currentSelectedColumn - (selectionWidth - 1) / 2; j <= currentSelectedColumn + (selectionWidth - 1) / 2; j++) {
+                GameObject tmp;
+                
+                tmp = GameObject.Find("cell" + i + "," + j + "(Clone)");
+                if (tmp != null ) {
+                    // Black circle
+                    if (tmp.GetComponent<BallInformation>().colorEnum == 5){
+                        tmp.GetComponent<SpriteRenderer>().color = new Color(.1f, .1f, .1f, 1f);
+                        
+                    }
+                    // Skull
+                    else if( tmp.GetComponent<BallInformation>().colorEnum == 4 ) {
+                        tmp.GetComponent<SpriteRenderer>().color = new Color(.8f, 0, 0, 1f);
+                    }
+                    // The rest
+                    else {
+                        tmp.GetComponent<SpriteRenderer>().color = selectionColor;
+                    }
+                    
+                }
+            }
+        }
+    }
+
+    void ChangeBallColors(int selectionWidth, int row, int column) {
+        failModalHidden = true;
+        // If selection width is 3, change 1 left, itself, 1 right
+        for (int i = row - (selectionWidth - 1) / 2; i <= row + (selectionWidth - 1) / 2; i++) {
+            for (int j = column - (selectionWidth - 1) / 2; j <= column + (selectionWidth - 1) / 2; j++) {
+                GameObject tmp;
+                tmp = GameObject.Find("cell" + i + "," + j + "(Clone)");
+                if (tmp != null){
+                    int colorNo = tmp.GetComponent<BallInformation>().colorEnum;
+                    // If skull is selected
+                    if( colorNo == 4 ){
+                        if ( failModalHidden ){
+                            LevelFailed();
+                            GameObject.Find("FailedText").GetComponent<TextMeshProUGUI>().SetText("Failure!   <sprite index= 4>");
+                            failModalHidden = false;
+                            break;
+                        }
+                        
+                    }
+                    // If the selected color is a changeable color
+                    if ( colorNo != 5 & colorNo != 4 ){
+                        GameObject child;
+                        child = tmp.transform.GetChild(0).gameObject;
+                        AnimateColorChange(child, tmp);
+                    }
+                }
+            }
+        }
+        
+    }
+
+    void AnimateColorChange(GameObject obj, GameObject parent) {
+        IEnumerator coroutine;
+        coroutine = ColorAnimation(obj, parent);
+        StartCoroutine(coroutine);
+    }
+    void ParallelCoroutine() {
+        IEnumerator coroutine;
+        coroutine = CheckConds();
+        StartCoroutine(coroutine);
+    }
+    IEnumerator ColorAnimation(GameObject obj, GameObject parent) {
+        touchDisabled = true;
+        float elapsedTime = 0;
+        float waitTime = .15f;
+
+        int previousColor = parent.GetComponent<BallInformation>().colorEnum;
+        int newEnum = 0;
+        int newColor = 0;
+        Color oldColor = obj.GetComponent<SpriteRenderer>().color;
+        LevelManager lvManager = GameObject.Find("LevelManager").GetComponent<LevelManager>();
+        int[] allowedColors = lvManager.lvl.allowedColors;
+        int changeableColor = lvManager.lvl.changeableColor;
+
+        while (elapsedTime < waitTime) {
+            newEnum = Random.Range(0, changeableColor);
+            newColor = allowedColors[newEnum] - 1;
+            parent.GetComponent<BallInformation>().colorEnum = newColor;
+            obj.GetComponent<SpriteRenderer>().color = Color.Lerp(oldColor, t.GetColorOfIndex(newColor + 1), (elapsedTime / waitTime));
+            
+            elapsedTime += Time.deltaTime;
+            yield return null;
+        }
+        // Update color counts
+
+        for( int i = 1; i <= changeableColor; i++ ) {
+            int colorIndex = allowedColors[i - 1] - 1;
+            LevelManager lm = GameObject.Find("LevelManager").GetComponent<LevelManager>();
+            if( previousColor == colorIndex ) {
+                lm.colorCount[colorIndex] = lm.colorCount[colorIndex] - 1;
+            }
+            if ( newColor == colorIndex ) {
+                lm.colorCount[colorIndex] = lm.colorCount[colorIndex] + 1;
+            }
+        }
+        ballCountText.UpdateColorCountText(text);
+        touchDisabled = false;
+
+        yield return null;
+    }
+
+    IEnumerator CheckConds() {
+        float elapsedTime = 0;
+        float waitTime = .15f;
+        while (elapsedTime < waitTime) {
+            elapsedTime += Time.deltaTime;
+            yield return null;
+        }
+        GameObject lm = GameObject.Find("LevelManager");
+        
+        if (CheckWinConditions(lm)) {
+            // If skull is clicked
+            if (failModalHidden){
+                LevelSucceed();
+            }
+            
+        } else if (lm.GetComponent<LevelManager>().moves < 1) {
+            if( failModalHidden ) {
+                LevelFailed();
+            }
+            
+        }
+
+        yield return null;
+    }
+    void LevelSucceed() {
+        SetCircleHideAnimationParameter();
+        Destroy(GameObject.Find("Table(Clone)"), .75f);
+        
+        // If reached max level
+        LevelManager lvlMan =  GameObject.Find("LevelManager").GetComponent<LevelManager>();
+        if (lvlMan.maxLv == lvlMan.lvl.levelNo + 1){
+            Object.Instantiate(lastLevelModal, GameObject.Find("Canvas").GetComponent<Transform>());
+        }
+        else{
+            Object.Instantiate(successModal, GameObject.Find("Canvas").GetComponent<Transform>());
+            SetSuccessModalInfo();
+            Button btn = GetComponent<Button>();
+            btn = GameObject.Find("StartButton").GetComponent<Button>();
+            btn.onClick.AddListener(NextLevelBtnOnClick);
+        }
+        
+    }
+    public void LevelFailed() {
+        SetCircleHideAnimationParameter();
+        Destroy(GameObject.Find("Table(Clone)"), .75f);
+        Object.Instantiate(failModal, GameObject.Find("Canvas").GetComponent<Transform>());
+
+        SetFailModalInfo();
+        Button btn = GetComponent<Button>();
+        btn = GameObject.Find("RetryButton").GetComponent<Button>();
+        btn.onClick.AddListener(RetryLevel);
+
+    }
+
+    void NextLevelBtnOnClick() {
+        int lastUnlockedLv = PlayerPrefs.GetInt("lastUnlockedLv");
+        int currentLv = GameObject.Find("LevelManager").GetComponent<LevelManager>().lvl.levelNo;
+
+        // If the player is at the last unlocked lvl, show the unlock modal
+        if( lastUnlockedLv <= currentLv ) {
+            Destroy(GameObject.Find("LevelEndModalSuccess(Clone)"), 0);
+            CreateLevelUnlockModal();
+        }
+        else {
+            LoadNextLevel();
+        }
+    }
+
+    void CreateLevelUnlockModal() {
+        Object.Instantiate(unlockLevelModal, GameObject.Find("Canvas").transform);
+    }
+
+    public void DestroySuccessModal() {
+        // Remove backdrop from the modal
+        GameObject modal;
+        if( modal = GameObject.Find("LevelEndModalSuccess(Clone)") ) {
+            Animator animator = GameObject.Find("SuccessModal").GetComponent<Animator>();
+            animator.SetBool("isHidden", true);
+
+            GameObject.Find("ExitButton").GetComponent<Button>().interactable = false;
+            GameObject.Find("StartButton").GetComponent<Button>().interactable = false;
+            Image img = modal.GetComponent<Image>();
+            var tempColor = img.color;
+            tempColor.a = 0f;
+            img.color = tempColor;
+
+            // .75 for the modal removal animation
+            Destroy(modal, .75f);
+        }
+    }
+    public void LoadNextLevel() {
+        DestroySuccessModal();
+        // .3 for the wait time to create table, until modal slides away
+        Invoke("LoadNextLevelDelayed", .3f);
+    }
+    
+    void RetryLevel() {
+
+        Animator animator = GameObject.Find("FailModal").GetComponent<Animator>();
+        animator.SetBool("isHidden", true);
+
+        GameObject.Find("ExitButton").GetComponent<Button>().interactable = false;
+        GameObject.Find("RetryButton").GetComponent<Button>().interactable = false;
+
+        // Remove backdrop from the modal
+        GameObject modal = GameObject.Find("LevelEndModalFail(Clone)");
+        Image img = modal.GetComponent<Image>();
+        var tempColor = img.color;
+        tempColor.a = 0f;
+        img.color = tempColor;
+
+        // .75 for the modal removal animation
+        Destroy(modal, .75f);
+
+        // .3 for the wait time to create table, until modal slides away
+        Invoke("LoadLevelDelayed", .3f);
+    }
+    void LoadNextLevelDelayed() {
+        GameObject lm = GameObject.Find("LevelManager");
+        lm.GetComponent<LevelManager>().LoadNextLevel();
+    }
+    void LoadLevelDelayed() {
+        GameObject lm = GameObject.Find("LevelManager");
+        lm.GetComponent<LevelManager>().LoadLevel(lm.GetComponent<LevelManager>().currentLevel);
+    }
+    void SetSuccessModalInfo() {
+        GameObject lm = GameObject.Find("LevelManager");
+        int currentLv = lm.GetComponent<LevelManager>().currentLevel + 1;
+        GameObject.Find("ModalLevelText").GetComponent<TextMeshProUGUI>().SetText("Level " + currentLv);
+        SetModalGoalText(true);
+    }
+    void SetFailModalInfo()
+    {
+        GameObject lm = GameObject.Find("LevelManager");
+        int currentLv = lm.GetComponent<LevelManager>().currentLevel;
+        GameObject.Find("ModalLevelText").GetComponent<TextMeshProUGUI>().SetText("Level " + currentLv);
+        SetModalGoalText(false);
+    }
+    void SetModalGoalText(bool isNext) {
+        string[] winConds;
+        
+        if (isNext){
+            winConds = GameObject.Find("LevelManager").GetComponent<LevelManager>().lvl.nextWinCons;
+        }
+        else{
+            winConds = GameObject.Find("LevelManager").GetComponent<LevelManager>().lvl.winConds;
+        }
+        
+        string display = "";
+        for (int i = 0; i < winConds.Length; i++){
+            if(i != winConds.Length - 1 ) {
+                display = display + winCondText.ConvertConditionToDisplay(winConds[i]) + "   --   ";
+            }
+            else {
+                display = display + winCondText.ConvertConditionToDisplay(winConds[i]);
+            }
+            
+            display = "<color=" + "#EA7272" + ">" + display + "</color>";
+        }
+        GameObject.Find("GoalTextBottom").GetComponent<TextMeshProUGUI>().SetText(display);
+    }
+
+    void SetCircleHideAnimationParameter()
+    {
+        GameObject table = GameObject.Find("Table(Clone)");
+        GameObject cell;
+        for(int i = 0; i < 64; i++)
+        {
+            cell = table.transform.GetChild(i).gameObject;
+            cell.GetComponent<BoxCollider>().enabled = false;
+            cell.transform.GetChild(0).gameObject.GetComponent<Animator>().SetBool("isCircleHidden", true);
+        }
+    }
+
+    public void EnableTouchWithDelay(){
+        Invoke("EnableTouch", .3f);
+    }
+
+    public void EnableTouch(){
+        touchDisabled = false;
+    }
+
+}
+    
