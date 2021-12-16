@@ -457,7 +457,7 @@
       "changeableColor": 4
     },
     {
-      "levelNo": 49,
+      "levelNo": 50,
       "colors": [16, 0, 0, 16, 4, 28],
       "noOfColors": 6,
       "variance": 0,
@@ -465,7 +465,56 @@
       "allowedColors": [1, 2, 3, 4, 5, 6],
       "changeableColor": 4,
       "moves": 20
+    },
+    {
+      "levelNo": 51,
+      "colors": [0, 14, 2, 0, 4, 44],
+      "noOfColors": 4,
+      "variance": 0,
+      "winConds": ["zz = 0"],
+      "allowedColors": [2, 3, 5, 6],
+      "changeableColor": 2,
+      "moves": 10
+    },
+    {
+      "levelNo": 52,
+      "colors": [7, 0, 0, 1, 12, 44],
+      "noOfColors": 4,
+      "variance": 0,
+      "winConds": ["tt = 0"],
+      "allowedColors": [1, 4, 5, 6],
+      "changeableColor": 2,
+      "moves": 10
+    },
+    {
+      "levelNo": 53,
+      "colors": [5, 25, 10, 5, 6, 13],
+      "noOfColors": 6,
+      "variance": 2,
+      "winConds": ["xx + tt = yy"],
+      "allowedColors": [1, 2, 3, 4, 5, 6],
+      "changeableColor": 4,
+      "moves": 10
+    },
+    {
+      "levelNo": 54,
+      "colors": [6, 6, 20, 32, 0, 0],
+      "noOfColors": 4,
+      "variance": 4,
+      "winConds": ["xx + yy = zz", "yy + zz > tt"],
+      "allowedColors": [1, 2, 3, 4],
+      "changeableColor": 4,
+      "moves": 10
+    },
+    {
+      "levelNo": 55,
+      "colors": [4, 4, 20, 36, 0, 0],
+      "noOfColors": 4,
+      "variance": 2,
+      "winConds": ["xx + yy = zz", "yy + zz = tt"],
+      "allowedColors": [1, 2, 3, 4],
+      "changeableColor": 4,
+      "moves": 20
     }
-    
   ]
 }

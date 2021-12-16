@@ -317,7 +317,7 @@ public class TouchHandler : MonoBehaviour
         
         // If reached max level
         LevelManager lvlMan =  GameObject.Find("LevelManager").GetComponent<LevelManager>();
-        if (lvlMan.maxLv == lvlMan.lvl.levelNo + 1){
+        if (lvlMan.maxLv == lvlMan.lvl.levelNo){
             Object.Instantiate(lastLevelModal, GameObject.Find("Canvas").GetComponent<Transform>());
         }
         else{

@@ -574,7 +574,7 @@ MonoBehaviour:
   movesText: {fileID: 1898680716}
   successModal: {fileID: 3259699904428614429, guid: 14b7fac4afb615d439b5e644c1f4fded, type: 3}
   failModal: {fileID: 6562843655554445841, guid: 834f1caabc7924241a0ce50fffcf015a, type: 3}
-  unlockLevelModal: {fileID: 3259699904428614429, guid: 80b1b5cced152f74dab3382a1540dce6, type: 3}
+  unlockLevelModal: {fileID: 3259699904428614429, guid: 4721035cd610dfa4c86f50268723310e, type: 3}
   lastLevelModal: {fileID: 3259699904428614429, guid: 964b55d5062224b47b65692ef89b1b9e, type: 3}
   selectionWidth: 3
   colorCount: 
