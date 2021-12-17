@@ -526,6 +526,7 @@ GameObject:
   - component: {fileID: 185381574}
   - component: {fileID: 185381575}
   - component: {fileID: 185381576}
+  - component: {fileID: 185381577}
   m_Layer: 0
   m_Name: Initiator
   m_TagString: Untagged
@@ -599,6 +600,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   adUnitAndroid: ca-app-pub-3940256099942544/5224354917
   adUnitIOS: ca-app-pub-3940256099942544/1712485313
+--- !u!114 &185381577
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 185381572}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b9edbb9e7383e1a4e8209cff62db4c9b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  red: {r: 0.92156863, g: 0.5411765, b: 0.5411765, a: 1}
+  blue: {r: 0.5568628, g: 0.54901963, b: 1, a: 1}
+  green: {r: 0.1254902, g: 0.7490196, b: 0.41960785, a: 1}
+  yellow: {r: 0.99607843, g: 0.827451, b: 0.1882353, a: 1}
 --- !u!1 &202438418
 GameObject:
   m_ObjectHideFlags: 0

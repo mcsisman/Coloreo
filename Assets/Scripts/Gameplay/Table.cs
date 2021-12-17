@@ -140,12 +140,13 @@ public class Table{
         return colorArray;
     }
 
-    public Color GetColorOfIndex(int index) {
+    public Color GetColorOfIndex(int index){
+        
         Color[] colorArr = new Color[6];
-        colorArr[0] = new Color(.922f, .541f, .541f, 1);
-        colorArr[1] = new Color(.557f, .549f, 1, 1);
-        colorArr[2] = new Color(.702f, 1f, .824f, 1);
-        colorArr[3] = new Color(.988f, .988f, .663f, 1);
+        colorArr[0] = GameObject.Find("Initiator").GetComponent<Colors>().red;
+        colorArr[1] = GameObject.Find("Initiator").GetComponent<Colors>().blue;
+        colorArr[2] = GameObject.Find("Initiator").GetComponent<Colors>().green;
+        colorArr[3] = GameObject.Find("Initiator").GetComponent<Colors>().yellow;
         colorArr[4] = new Color(1f, 1f, 1f, 1f);
         colorArr[5] = new Color(0f, 0f, 0f, 1f);
 
@@ -154,10 +155,10 @@ public class Table{
 
     public Color GetRandomSpriteColor(int noOfColors) {
         Color[] colorArr = new Color[6];
-        colorArr[0] = new Color(.922f, .541f, .541f, 1);
-        colorArr[1] = new Color(.557f, .549f, 1, 1);
-        colorArr[2] = new Color(.702f, 1f, .824f, 1);
-        colorArr[3] = new Color(.988f, .988f, .663f, 1);
+        colorArr[0] = GameObject.Find("Initiator").GetComponent<Colors>().red;
+        colorArr[1] = GameObject.Find("Initiator").GetComponent<Colors>().blue;
+        colorArr[2] = GameObject.Find("Initiator").GetComponent<Colors>().green;
+        colorArr[3] = GameObject.Find("Initiator").GetComponent<Colors>().yellow;
         colorArr[4] = new Color(1f, 1f, 1f, 1f);
         colorArr[5] = new Color(0f, 0f, 0f, 1f);
         int randomIndex = Random.Range(0, noOfColors);
