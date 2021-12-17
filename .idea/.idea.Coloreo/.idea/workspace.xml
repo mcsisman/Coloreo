@@ -1,7 +1,34 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="20e3ce2a-1bcd-4d4d-90f7-dd9a8edfec3b" name="Changes" comment="" />
+    <list default="true" id="20e3ce2a-1bcd-4d4d-90f7-dd9a8edfec3b" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Coloreo/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Coloreo/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/UI Prefabs/Intext Icons/Skull.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/UI Prefabs/Intext Icons/Skull.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/UI Prefabs/Intext Icons/Square.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/UI Prefabs/Intext Icons/Square.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/UI Prefabs/Intext Icons/SquareBlack 1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/UI Prefabs/Intext Icons/SquareBlack 1.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/UI Prefabs/Intext Icons/SquareBlack.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/UI Prefabs/Intext Icons/SquareBlack.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/UI Prefabs/Intext Icons/SquareBlue.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/UI Prefabs/Intext Icons/SquareBlue.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/UI Prefabs/Intext Icons/SquareGreen.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/UI Prefabs/Intext Icons/SquareGreen.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/UI Prefabs/Intext Icons/SquareRed.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/UI Prefabs/Intext Icons/SquareRed.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/UI Prefabs/Intext Icons/SquareYellow.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/UI Prefabs/Intext Icons/SquareYellow.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/UI Prefabs/Intext Icons/grow.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/UI Prefabs/Intext Icons/grow.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/UI Prefabs/Intext Icons/plus.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/UI Prefabs/Intext Icons/plus.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/UI Prefabs/Intext Icons/shrink.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/UI Prefabs/Intext Icons/shrink.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/UI Prefabs/Modal Prefabs/LevelEndModalFail.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/UI Prefabs/Modal Prefabs/LevelEndModalFail.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/UI Prefabs/Modal Prefabs/LevelEndModalSuccess.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/UI Prefabs/Modal Prefabs/LevelEndModalSuccess.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/GameScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/GameScene.unity" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
