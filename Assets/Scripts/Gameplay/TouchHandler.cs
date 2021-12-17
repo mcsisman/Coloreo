@@ -277,9 +277,9 @@ public class TouchHandler : MonoBehaviour
             elapsedTime += Time.deltaTime;
             yield return null;
         }
-        
-        // If bonus square occurs!
-        if (Random.Range(0, oneInChanceOfBonusSquare) == 0){
+        LevelManager lm = GameObject.Find("LevelManager").GetComponent<LevelManager>();
+        // If bonus square occurs! and if it's not last move
+        if (Random.Range(0, oneInChanceOfBonusSquare) == 0 && lm.moves > 1){
             InsertBonusSquare(obj, parent);
             // this ensures if a bonus square spawns, count is right
             newColor = -1;
@@ -292,7 +292,7 @@ public class TouchHandler : MonoBehaviour
         // Update color counts
         for( int i = 1; i <= changeableColor; i++ ) {
             int colorIndex = allowedColors[i - 1] - 1;
-            LevelManager lm = GameObject.Find("LevelManager").GetComponent<LevelManager>();
+            
             if( previousColor == colorIndex ) {
                 lm.colorCount[colorIndex] = lm.colorCount[colorIndex] - 1;
             }
@@ -494,17 +494,20 @@ public class TouchHandler : MonoBehaviour
         if (random == 0){
             obj.GetComponent<SpriteRenderer>().sprite = obj.GetComponent<BallInformation>().growSprite;
             parent.GetComponent<BallInformation>().colorEnum = 7;
+            obj.GetComponent<SpriteRenderer>().color = new Color(0.9686275f, 0.7176471f, 0.1921569f, 1f);
         }
         else if (random == 1){
             obj.GetComponent<SpriteRenderer>().sprite = obj.GetComponent<BallInformation>().shrinkSprite;
             parent.GetComponent<BallInformation>().colorEnum = 8;
+            obj.GetComponent<SpriteRenderer>().color = new Color(0.1254902f, 0.7490196f, 0.4196078f, 1f);
         }
         else if (random == 2){
             obj.GetComponent<SpriteRenderer>().sprite = obj.GetComponent<BallInformation>().plusSprite;
             parent.GetComponent<BallInformation>().colorEnum = 9;
+            obj.GetComponent<SpriteRenderer>().color = new Color(0.1254902f, 0.7490196f, 0.4196078f, 1f);
         }
-        //obj.GetComponent<SpriteRenderer>().color = new Color(0.1254902f, 0.7490196f, 0.4196078f, 1f);
-        obj.GetComponent<SpriteRenderer>().color = new Color(0, 0, 0, 1f);
+        //green obj.GetComponent<SpriteRenderer>().color = new Color(0.1254902f, 0.7490196f, 0.4196078f, 1f);
+        //obj.GetComponent<SpriteRenderer>().color = new Color(0, 0, 0, 1f);
         
     }
 
