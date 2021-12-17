@@ -36,7 +36,6 @@ public class Table{
 
         tableObj = Object.Instantiate(table);
         createCells();
-        
     }
 
     public void DecreaseCountOfIndex(int index) {

@@ -101,6 +101,9 @@ MonoBehaviour:
   colorEnum: 0
   circleSprite: {fileID: 21300000, guid: d584733fa10962e4e87a2d3fcfee0105, type: 3}
   deathSprite: {fileID: 21300000, guid: 1a7b29841d97bbf4b94b1030eb5b3508, type: 3}
+  shrinkSprite: {fileID: 21300000, guid: 29514a3a15229114992f7daa78823704, type: 3}
+  growSprite: {fileID: 21300000, guid: f3ddacddc0e7e1449957ddbee2287a36, type: 3}
+  plusSprite: {fileID: 21300000, guid: 61c597b11ac2cc4428cfb34295cc1662, type: 3}
 --- !u!95 &4381296866594364177
 Animator:
   serializedVersion: 3

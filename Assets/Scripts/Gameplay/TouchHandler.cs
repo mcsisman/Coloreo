@@ -15,6 +15,10 @@ public class TouchHandler : MonoBehaviour
     [SerializeField] private GameObject failModal;
     [SerializeField] private GameObject unlockLevelModal;
     [SerializeField] private GameObject lastLevelModal;
+    [SerializeField] private float colorChangeAnimationDuration = 0.25f;
+    [SerializeField] private int oneInChanceOfBonusSquare = 40;
+    [SerializeField] private int temporarySizeDuration = 3;
+    private int temporarySizeCounter = 0;
     private Collider currentball;
     private int currentSelectedRow;
     private int currentSelectedColumn;
@@ -28,6 +32,7 @@ public class TouchHandler : MonoBehaviour
     private BallCountText ballCountText;
     public TextMeshProUGUI text;
     private bool failModalHidden = false;
+    
 
     Table t;
     // Start is called before the first frame update
@@ -91,10 +96,9 @@ public class TouchHandler : MonoBehaviour
                     mt.UpdateMovesText(movesText);
                     ChangeBallColors(selectionWidth, currentSelectedRow, currentSelectedColumn);
                     ParallelCoroutine();
-                    
-                    
-                } else {
+                    Invoke("ControlSelectionSize", colorChangeAnimationDuration);
 
+                } else {
                     RemoveSelectionBackground();
                 }
             }
@@ -231,6 +235,10 @@ public class TouchHandler : MonoBehaviour
                         child = tmp.transform.GetChild(0).gameObject;
                         AnimateColorChange(child, tmp);
                     }
+
+                    if (colorNo == 7 || colorNo == 8 || colorNo == 9){
+                        BonusSquareClicked(colorNo);
+                    }
                 }
             }
         }
@@ -250,7 +258,7 @@ public class TouchHandler : MonoBehaviour
     IEnumerator ColorAnimation(GameObject obj, GameObject parent) {
         touchDisabled = true;
         float elapsedTime = 0;
-        float waitTime = .15f;
+        float waitTime = colorChangeAnimationDuration;
 
         int previousColor = parent.GetComponent<BallInformation>().colorEnum;
         int newEnum = 0;
@@ -269,8 +277,19 @@ public class TouchHandler : MonoBehaviour
             elapsedTime += Time.deltaTime;
             yield return null;
         }
+        
+        // If bonus square occurs!
+        if (Random.Range(0, oneInChanceOfBonusSquare) == 0){
+            InsertBonusSquare(obj, parent);
+            // this ensures if a bonus square spawns, count is right
+            newColor = -1;
+        }
+        else{
+            obj.GetComponent<SpriteRenderer>().sprite = obj.GetComponent<BallInformation>().circleSprite;
+            obj.GetComponent<SpriteRenderer>().color = t.GetColorOfIndex(newColor + 1);
+        }
+        
         // Update color counts
-
         for( int i = 1; i <= changeableColor; i++ ) {
             int colorIndex = allowedColors[i - 1] - 1;
             LevelManager lm = GameObject.Find("LevelManager").GetComponent<LevelManager>();
@@ -283,13 +302,12 @@ public class TouchHandler : MonoBehaviour
         }
         ballCountText.UpdateColorCountText(text);
         touchDisabled = false;
-
         yield return null;
     }
 
     IEnumerator CheckConds() {
         float elapsedTime = 0;
-        float waitTime = .15f;
+        float waitTime = colorChangeAnimationDuration;
         while (elapsedTime < waitTime) {
             elapsedTime += Time.deltaTime;
             yield return null;
@@ -311,7 +329,8 @@ public class TouchHandler : MonoBehaviour
 
         yield return null;
     }
-    void LevelSucceed() {
+    void LevelSucceed(){
+        selectionWidth = 3;
         SetCircleHideAnimationParameter();
         Destroy(GameObject.Find("Table(Clone)"), .75f);
         
@@ -330,6 +349,7 @@ public class TouchHandler : MonoBehaviour
         
     }
     public void LevelFailed() {
+        selectionWidth = 3;
         SetCircleHideAnimationParameter();
         Destroy(GameObject.Find("Table(Clone)"), .75f);
         Object.Instantiate(failModal, GameObject.Find("Canvas").GetComponent<Transform>());
@@ -467,6 +487,67 @@ public class TouchHandler : MonoBehaviour
 
     public void EnableTouch(){
         touchDisabled = false;
+    }
+
+    void InsertBonusSquare(GameObject obj, GameObject parent){
+        int random = Random.Range(0, 3);
+        if (random == 0){
+            obj.GetComponent<SpriteRenderer>().sprite = obj.GetComponent<BallInformation>().growSprite;
+            parent.GetComponent<BallInformation>().colorEnum = 7;
+        }
+        else if (random == 1){
+            obj.GetComponent<SpriteRenderer>().sprite = obj.GetComponent<BallInformation>().shrinkSprite;
+            parent.GetComponent<BallInformation>().colorEnum = 8;
+        }
+        else if (random == 2){
+            obj.GetComponent<SpriteRenderer>().sprite = obj.GetComponent<BallInformation>().plusSprite;
+            parent.GetComponent<BallInformation>().colorEnum = 9;
+        }
+        //obj.GetComponent<SpriteRenderer>().color = new Color(0.1254902f, 0.7490196f, 0.4196078f, 1f);
+        obj.GetComponent<SpriteRenderer>().color = new Color(0, 0, 0, 1f);
+        
+    }
+
+    void ControlSelectionSize(){
+        if (temporarySizeCounter == temporarySizeDuration){
+            selectionWidth = 3;
+            temporarySizeCounter = 0;
+        }
+        if (selectionWidth == 3){
+            temporarySizeCounter = 0;
+        }
+        else{
+            temporarySizeCounter++;
+        }
+    }
+
+    void BonusSquareClicked(int colorEnum){
+        if (colorEnum == 7){
+            if (selectionWidth == 1 || selectionWidth == 3){
+                selectionWidth = selectionWidth + 2;
+            }
+        }
+        else if (colorEnum == 8){
+            if (selectionWidth == 3 || selectionWidth == 5){
+                selectionWidth = selectionWidth - 2;
+            }
+        }
+        else if (colorEnum == 9){
+            LevelManager lm = GameObject.Find("LevelManager").GetComponent<LevelManager>();
+            lm.moves = lm.moves + 3;
+            AnimateMovesTextColor();
+            mt.UpdateMovesText(movesText);
+        }
+    }
+
+    void AnimateMovesTextColor(){
+        //Triggers animation
+        GameObject.Find("MovesText").GetComponent<Animation>().Play("MovesTextBonusAnim");
+        //Invoke("ReadyMovesTextAnim", 1);
+    }
+
+    void ReadyMovesTextAnim(){
+        GameObject.Find("MovesText").GetComponent<Animator>().SetBool("isGrey", false);
     }
 
 }

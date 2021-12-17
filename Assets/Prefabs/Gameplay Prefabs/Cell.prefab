@@ -99,9 +99,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   row: 7
   column: 7
-  colorEnum: 5
+  colorEnum: 0
   circleSprite: {fileID: 0}
   deathSprite: {fileID: 0}
+  shrinkSprite: {fileID: 0}
+  growSprite: {fileID: 0}
+  plusSprite: {fileID: 0}
 --- !u!65 &7694240459546475527
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -140,15 +143,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7978099913965415445, guid: 4b9b1bdfb8cf8c84bba8ac996f50dc0e, type: 3}
       propertyPath: m_Color.b
-      value: 0
+      value: 0.541
       objectReference: {fileID: 0}
     - target: {fileID: 7978099913965415445, guid: 4b9b1bdfb8cf8c84bba8ac996f50dc0e, type: 3}
       propertyPath: m_Color.g
-      value: 0
+      value: 0.541
       objectReference: {fileID: 0}
     - target: {fileID: 7978099913965415445, guid: 4b9b1bdfb8cf8c84bba8ac996f50dc0e, type: 3}
       propertyPath: m_Color.r
-      value: 0
+      value: 0.922
       objectReference: {fileID: 0}
     - target: {fileID: 7978099913965415445, guid: 4b9b1bdfb8cf8c84bba8ac996f50dc0e, type: 3}
       propertyPath: m_WasSpriteAssigned

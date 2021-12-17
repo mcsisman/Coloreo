@@ -10,6 +10,9 @@ public class BallInformation : MonoBehaviour
     [SerializeField] public int colorEnum;
     public Sprite circleSprite;
     public Sprite deathSprite;
+    public Sprite shrinkSprite;
+    public Sprite growSprite;
+    public Sprite plusSprite;
     // Start is called before the first frame update
     void Start()
     {
