@@ -64,7 +64,9 @@ public class LevelManager : MonoBehaviour
     }
 
     public void LoadLevel(int level) {
-        
+        if (GameObject.Find("Table(Clone)")){
+            Destroy(GameObject.Find("Table(Clone)"), 0);
+        }
         currentLevel = level;
         if (currentLevel > PlayerPrefs.GetInt("lastUnlockedLv")){
             SceneManager.LoadScene("MainMenu");
@@ -99,7 +101,10 @@ public class LevelManager : MonoBehaviour
         mt.UpdateMovesText(movesText);
     }
     public void LoadNextLevel() {
-       
+
+        if (GameObject.Find("Table(Clone)")){
+            Destroy(GameObject.Find("Table(Clone)"), 0);
+        }
         for (int i = 0; i < 6; i++) {
             colorCount[i] = 0;
         }
