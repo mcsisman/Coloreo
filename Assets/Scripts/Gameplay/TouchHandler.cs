@@ -430,7 +430,7 @@ public class TouchHandler : MonoBehaviour
         GameObject lm = GameObject.Find("LevelManager");
         lm.GetComponent<LevelManager>().LoadNextLevel();
     }
-    void LoadLevelDelayed() {
+    public void LoadLevelDelayed() {
         GameObject lm = GameObject.Find("LevelManager");
         lm.GetComponent<LevelManager>().LoadLevel(lm.GetComponent<LevelManager>().currentLevel);
     }

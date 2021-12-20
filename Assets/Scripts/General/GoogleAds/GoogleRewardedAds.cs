@@ -51,6 +51,9 @@ public class GoogleRewardedAds : MonoBehaviour
 
         // Game scene
         if( GameObject.Find("LevelManager") ) {
+            if (GameObject.Find("Table(Clone)")){
+                Destroy(GameObject.Find("Table(Clone)"), 0);
+            }
             int lastUnlockedLv;
             lastUnlockedLv = PlayerPrefs.GetInt("lastUnlockedLv");
             PlayerPrefs.SetInt("lastUnlockedLv", lastUnlockedLv + 4);
@@ -71,6 +74,6 @@ public class GoogleRewardedAds : MonoBehaviour
     }
     public void HandleRewardedAdClosed( object sender, EventArgs args ) {
         LoadAd();
-        GetComponent<TouchHandler>().RetryLevel();
+        GetComponent<TouchHandler>().LoadLevelDelayed();
     }
 }
