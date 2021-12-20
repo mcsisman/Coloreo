@@ -186,7 +186,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: You have completed all levels. Stay tuned for new levels!
+  m_text: You have completed all the levels. Stay tuned for new ones!
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 6a0ebe9264e58324da46b45240d980b3, type: 2}
   m_sharedMaterial: {fileID: 5941869863605130605, guid: 6a0ebe9264e58324da46b45240d980b3, type: 2}
@@ -565,7 +565,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Congratz!
+  m_text: Congrats!
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 6a0ebe9264e58324da46b45240d980b3, type: 2}
   m_sharedMaterial: {fileID: 5941869863605130605, guid: 6a0ebe9264e58324da46b45240d980b3, type: 2}

@@ -67,6 +67,7 @@ public class GoogleRewardedAds : MonoBehaviour
 
     public void HandleUserEarnedReward( object sender, Reward args ) {
         GrantReward();
+        Debug.Log("reward");
     }
     public void HandleRewardedAdClosed( object sender, EventArgs args ) {
         LoadAd();

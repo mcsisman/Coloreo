@@ -595,6 +595,97 @@
       "allowedColors": [1, 2, 3, 4, 5, 6],
       "changeableColor": 4,
       "moves": 10
+    },
+    {
+      "levelNo": 64,
+      "colors": [4, 0, 0, 4, 0, 56],
+      "noOfColors": 5,
+      "variance": 0,
+      "winConds": ["xx = 0", "tt = 0"],
+      "allowedColors": [1, 2, 3, 4, 6],
+      "changeableColor": 4,
+      "moves": 15
+    },
+    {
+      "levelNo": 65,
+      "colors": [4, 0, 0, 4, 0, 56],
+      "noOfColors": 5,
+      "variance": 0,
+      "winConds": ["yy = 4", "zz = 4"],
+      "allowedColors": [1, 2, 3, 4, 6],
+      "changeableColor": 4,
+      "moves": 20
+    },
+    {
+      "levelNo": 66,
+      "colors": [4, 4, 4, 0, 0, 52],
+      "noOfColors": 5,
+      "variance": 0,
+      "winConds": ["tt = 12"],
+      "allowedColors": [1, 2, 3, 4, 6],
+      "changeableColor": 4,
+      "moves": 30
+    },
+    {
+      "levelNo": 67,
+      "colors": [24, 0, 0, 0, 0, 40],
+      "noOfColors": 5,
+      "variance": 0,
+      "winConds": ["yy = 8", "zz = 8", "tt = 8"],
+      "allowedColors": [1, 2, 3, 4, 6],
+      "changeableColor": 4,
+      "moves": 20
+    },
+    {
+      "levelNo": 68,
+      "colors": [20, 20, 0, 20, 4, 0],
+      "noOfColors": 5,
+      "variance": 0,
+      "winConds": ["xx = 15", "yy = 15", "zz = 15", "tt = 15"],
+      "allowedColors": [1, 2, 3, 4, 5],
+      "changeableColor": 4,
+      "moves": 25
+    },
+    {
+      "levelNo": 69,
+      "colors": [0, 60, 0, 0, 4, 0],
+      "noOfColors": 5,
+      "variance": 0,
+      "winConds": ["xx = 15", "yy = 15", "zz = 15", "tt = 15"],
+      "allowedColors": [1, 2, 3, 4, 5],
+      "changeableColor": 4,
+      "moves": 25
+    },
+    {
+      "levelNo": 70,
+      "colors": [10, 20, 10, 20, 4, 0],
+      "noOfColors": 5,
+      "variance": 4,
+      "winConds": ["xx + zz = 30", "yy + tt = 30"],
+      "allowedColors": [1, 2, 3, 4, 5],
+      "changeableColor": 4,
+      "moves": 15
+      },
+    {
+      "levelNo": 71,
+      "colors": [10, 10, 5, 5, 0, 34],
+      "noOfColors": 5,
+      "variance": 2,
+      "winConds": ["xx + yy = 12", "zz + tt = 18"],
+      "allowedColors": [1, 2, 3, 4, 6],
+      "changeableColor": 4,
+      "moves": 15
+    },
+    {
+      "levelNo": 72,
+      "colors": [3, 3, 3, 3, 0, 52],
+      "noOfColors": 5,
+      "variance": 1,
+      "winConds": ["xx + yy = 2", "zz = 5"],
+      "allowedColors": [1, 2, 3, 4, 6],
+      "changeableColor": 4,
+      "moves": 15
     }
+    
   ]
 }

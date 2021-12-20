@@ -297,12 +297,12 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 60
+  m_fontSize: 55
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
   m_fontSizeMin: 18
-  m_fontSizeMax: 60
+  m_fontSizeMax: 55
   m_fontStyle: 0
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 512
@@ -416,7 +416,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: b43d6b1125b190a4bb81c5069cd73e1b, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 6ef3ec14a557b4f4688b4ccd57dd9920, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -7686,7 +7686,7 @@ RectTransform:
   m_GameObject: {fileID: 1128560172}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.9, y: 0.9, z: 1}
   m_Children:
   - {fileID: 2137615765}
   m_Father: {fileID: 1246891560}
@@ -7709,8 +7709,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e3f763206240ff24cbc81d0dc84377a0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  width: 4.2
-  height: 1.4
+  width: 3.9
+  height: 1.2
 --- !u!114 &1128560175
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7908,7 +7908,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: b443dcd03c5f3604fb55d1b844bf6331, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 2293c56de75049741a7cc371829314e2, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -8658,7 +8658,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   width: 5.1
-  height: 8.1
+  height: 7.2
 --- !u!1 &1271945390
 GameObject:
   m_ObjectHideFlags: 0
@@ -9491,8 +9491,8 @@ MonoBehaviour:
   selectedLv: 0
   lastUnlockedLv: 0
   unlockLevelModal: {fileID: 3259699904428614429, guid: 80b1b5cced152f74dab3382a1540dce6, type: 3}
-  width: 5.1
-  height: 5.1
+  width: 4.5
+  height: 4.5
   highestLv: 0
 --- !u!1 &1359422192
 GameObject:
@@ -12016,7 +12016,7 @@ RectTransform:
   m_GameObject: {fileID: 1677819552}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.9, y: 0.9, z: 1}
   m_Children:
   - {fileID: 483768906}
   - {fileID: 2014892837}
@@ -12105,8 +12105,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e3f763206240ff24cbc81d0dc84377a0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  width: 4.2
-  height: 1.4
+  width: 3.9
+  height: 1.2
 --- !u!1 &1679687190
 GameObject:
   m_ObjectHideFlags: 0

@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 using System.IO;
 using TMPro;
 using static Levels;
@@ -63,7 +64,13 @@ public class LevelManager : MonoBehaviour
     }
 
     public void LoadLevel(int level) {
+        
         currentLevel = level;
+        if (currentLevel > PlayerPrefs.GetInt("lastUnlockedLv")){
+            SceneManager.LoadScene("MainMenu");
+            return;
+        }
+        
         for (int i = 0; i < 6; i++) {
             colorCount[i] = 0;
         }
@@ -92,13 +99,17 @@ public class LevelManager : MonoBehaviour
         mt.UpdateMovesText(movesText);
     }
     public void LoadNextLevel() {
-        
+       
         for (int i = 0; i < 6; i++) {
             colorCount[i] = 0;
         }
         
         //Load Next Level
         currentLevel++;
+        if (currentLevel > PlayerPrefs.GetInt("lastUnlockedLv")){
+            SceneManager.LoadScene("MainMenu");
+            return;
+        }
         lvl = levels.levels[currentLevel - 1];
 
         if(currentLevel < levels.levels.Length)

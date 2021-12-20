@@ -16,8 +16,9 @@ public class LevelTable : MonoBehaviour
     public int highestLv;
     // Start is called before the first frame update
     void Start(){
-        // Delete all player prefs
-        //PlayerPrefs.DeleteAll();
+        //Change last unlocked lvl -- DEBUG!!!!
+        //PlayerPrefs.SetInt("lastUnlockedLv", 64);
+        //PlayerPrefs.SetInt("highestLv", 64);
         
         highestLv = PlayerPrefs.GetInt("highestLv", 1);
         lastUnlockedLv = PlayerPrefs.GetInt("lastUnlockedLv", 4);

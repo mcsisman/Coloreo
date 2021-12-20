@@ -8,7 +8,7 @@ public class TopBarContainerMain : MonoBehaviour
     void Start()
     {
         RectTransform t = GetComponent<RectTransform>();
-        t.sizeDelta = new Vector2(Screen.safeArea.width, ( Screen.safeArea.height - Screen.safeArea.width * 8.1f / 10 ) * ( 2f/ 3f ));
+        t.sizeDelta = new Vector2(Screen.safeArea.width, ( Screen.safeArea.height - Screen.safeArea.width * 7.2f / 10 ) * ( 2f/ 3f ));
     }
 
     // Update is called once per frame

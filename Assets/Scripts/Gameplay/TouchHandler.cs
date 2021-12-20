@@ -84,7 +84,6 @@ public class TouchHandler : MonoBehaviour
             }
 
             if (touch.phase == TouchPhase.Ended) {
-
                 if (Physics.Raycast(ray, out hit)) {
                     currentball = hit.collider;
                     RemoveSelectionBackground();
@@ -397,14 +396,15 @@ public class TouchHandler : MonoBehaviour
             Destroy(modal, .75f);
         }
     }
-    public void LoadNextLevel() {
+    public void LoadNextLevel(){
+        selectionWidth = 3;
         DestroySuccessModal();
         // .3 for the wait time to create table, until modal slides away
         Invoke("LoadNextLevelDelayed", .3f);
     }
     
     void RetryLevel() {
-
+        selectionWidth = 3;
         Animator animator = GameObject.Find("FailModal").GetComponent<Animator>();
         animator.SetBool("isHidden", true);
 
@@ -504,7 +504,8 @@ public class TouchHandler : MonoBehaviour
             parent.GetComponent<BallInformation>().colorEnum = 9;
         }
         //green obj.GetComponent<SpriteRenderer>().color = new Color(0.1254902f, 0.7490196f, 0.4196078f, 1f);
-        obj.GetComponent<SpriteRenderer>().color = new Color(0.9686275f, 0.7176471f, 0.1921569f, 1f);
+        obj.GetComponent<SpriteRenderer>().color = new Color(0.2f, 0.227451f, 0.3960784f, 1f);
+        //obj.GetComponent<SpriteRenderer>().color = new Color(0.9686275f, 0.7176471f, 0.1921569f, 1f);
         //obj.GetComponent<SpriteRenderer>().color = new Color(0, 0, 0, 1f);
         
     }

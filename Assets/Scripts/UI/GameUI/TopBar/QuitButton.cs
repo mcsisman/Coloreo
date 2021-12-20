@@ -11,7 +11,7 @@ public class QuitButton : MonoBehaviour
     {
         float topBarHeight = ( Screen.safeArea.height - Screen.safeArea.width * 8 / 10 ) / 2;
         RectTransform t = GetComponent<RectTransform>();
-        t.sizeDelta = new Vector2(Screen.safeArea.width / 15, Screen.safeArea.width / 15);
+        t.sizeDelta = new Vector2(Screen.safeArea.width / 12, Screen.safeArea.width / 12);
         t.anchoredPosition = new Vector3(-Screen.safeArea.width / 9, 0, 0);
 
         Button btn = GetComponent<Button>();
