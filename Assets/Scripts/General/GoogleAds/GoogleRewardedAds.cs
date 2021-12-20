@@ -67,9 +67,10 @@ public class GoogleRewardedAds : MonoBehaviour
 
     public void HandleUserEarnedReward( object sender, Reward args ) {
         GrantReward();
-        Debug.Log("reward");
+        Debug.Log("reward" + args.ToString());
     }
     public void HandleRewardedAdClosed( object sender, EventArgs args ) {
         LoadAd();
+        GetComponent<TouchHandler>().RetryLevel();
     }
 }

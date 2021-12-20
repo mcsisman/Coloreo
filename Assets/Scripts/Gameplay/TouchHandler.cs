@@ -403,24 +403,26 @@ public class TouchHandler : MonoBehaviour
         Invoke("LoadNextLevelDelayed", .3f);
     }
     
-    void RetryLevel() {
+    public void RetryLevel() {
         selectionWidth = 3;
-        Animator animator = GameObject.Find("FailModal").GetComponent<Animator>();
-        animator.SetBool("isHidden", true);
 
-        GameObject.Find("ExitButton").GetComponent<Button>().interactable = false;
-        GameObject.Find("RetryButton").GetComponent<Button>().interactable = false;
+        if (GameObject.Find("FailModal")){
+            Animator animator = GameObject.Find("FailModal").GetComponent<Animator>();
+            animator.SetBool("isHidden", true);
+            GameObject.Find("ExitButton").GetComponent<Button>().interactable = false;
+            GameObject.Find("RetryButton").GetComponent<Button>().interactable = false;
+            
+            // Remove backdrop from the modal
+            GameObject modal = GameObject.Find("LevelEndModalFail(Clone)");
+            Image img = modal.GetComponent<Image>();
+            var tempColor = img.color;
+            tempColor.a = 0f;
+            img.color = tempColor;
 
-        // Remove backdrop from the modal
-        GameObject modal = GameObject.Find("LevelEndModalFail(Clone)");
-        Image img = modal.GetComponent<Image>();
-        var tempColor = img.color;
-        tempColor.a = 0f;
-        img.color = tempColor;
-
-        // .75 for the modal removal animation
-        Destroy(modal, .75f);
-
+            // .75 for the modal removal animation
+            Destroy(modal, .75f);
+        }
+        
         // .3 for the wait time to create table, until modal slides away
         Invoke("LoadLevelDelayed", .3f);
     }
