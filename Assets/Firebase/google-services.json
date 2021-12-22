@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "966709747536",
+    "project_id": "coloreo-f27e6",
+    "storage_bucket": "coloreo-f27e6.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:966709747536:android:a45594cc8d8313f25fd655",
+        "android_client_info": {
+          "package_name": "com.mcs.Coloreo"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "966709747536-tp2qugiuvk0a06ls3hhkirkg304es7c6.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBjZmHe5lrr57dQQcaLZbuAm2NO3ntsxmI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "966709747536-tp2qugiuvk0a06ls3hhkirkg304es7c6.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "966709747536-n73i6ln8tm9vkuq71m7og3jskd6cv4s5.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.mcs.Coloreo"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

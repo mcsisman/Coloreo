@@ -9,6 +9,8 @@ public class PageDisplay : MonoBehaviour
     [SerializeField] private float width = 4.2f;
     [SerializeField] private float height = 1.4f;
     GameObject levelTable;
+
+    private LevelTable lvlTable;
     // Start is called before the first frame update
     void Start()
     {
@@ -16,6 +18,7 @@ public class PageDisplay : MonoBehaviour
         Button rightBtn = transform.GetChild(2).gameObject.GetComponent<Button>();
 
         levelTable = GameObject.Find("LevelTable");
+        lvlTable = levelTable.GetComponent<LevelTable>();
         UpdatePageText();
 
         leftBtn.onClick.AddListener(LeftOnClick);
@@ -27,26 +30,30 @@ public class PageDisplay : MonoBehaviour
 
     void LeftOnClick()
     {
-        if(levelTable.GetComponent<LevelTable>().page == 1)
-        {
+        if(lvlTable.page == 1){
             return;
         }
-        levelTable.GetComponent<LevelTable>().page = levelTable.GetComponent<LevelTable>().page - 1;
+        lvlTable.page = lvlTable.page - 1;
+        lvlTable.selectedLv = lvlTable.page * 16;
+        GameObject.Find("LevelText").transform.GetChild(0).GetComponent<LvTextMain>().UpdateLevelText();
         UpdatePageText();
     }
     void RightOnClick()
     {
-        levelTable.GetComponent<LevelTable>().page = levelTable.GetComponent<LevelTable>().page + 1;
+        if (lvlTable.lastUnlockedLv <= lvlTable.page * 16){
+            return;
+        }
+        lvlTable.page = lvlTable.page + 1;
+        lvlTable.selectedLv = (lvlTable.page-1) * 16 + 1;
+        GameObject.Find("LevelText").transform.GetChild(0).GetComponent<LvTextMain>().UpdateLevelText();
         UpdatePageText();
     }
     void UpdatePageText()
     {
-        int page;
-        page = levelTable.GetComponent<LevelTable>().page;
-        string strPage;
-        strPage = page.ToString();
+        int page = levelTable.GetComponent<LevelTable>().page;
+        string strPage = page.ToString();
         transform.GetChild(1).gameObject.transform.GetChild(0).gameObject.GetComponent<TextMeshProUGUI>().SetText(strPage);
-        levelTable.GetComponent<LevelTable>().SetLevelTexts();
+        lvlTable.SetLevelTexts();
     }
 
 }

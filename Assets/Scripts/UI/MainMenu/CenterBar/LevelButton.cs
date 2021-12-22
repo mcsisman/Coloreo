@@ -47,7 +47,7 @@ public class LevelButton : MonoBehaviour
         levelTable.GetComponent<LevelTable>().selectedLv = selectedLv;
         
         // Set the level text
-        GameObject.Find("LevelText").transform.GetChild(0).gameObject.GetComponent<TextMeshProUGUI>().SetText("Lv. " + selectedLv);
+        GameObject.Find("LevelText").transform.GetChild(0).GetComponent<LvTextMain>().UpdateLevelText();
         // Remove the previous selection
         levelTable.transform.GetChild(previousRow).gameObject.transform.GetChild(previousColumn).gameObject.transform.GetChild(1).gameObject.SetActive(false);
         

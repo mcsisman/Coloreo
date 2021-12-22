@@ -1,0 +1,10 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources xmlns:tools="http://schemas.android.com/tools" tools:keep="@string/gcm_defaultSenderId,@string/google_storage_bucket,@string/project_id,@string/google_api_key,@string/google_crash_reporting_api_key,@string/google_app_id,@string/default_web_client_id">
+  <string name="gcm_defaultSenderId" translatable="false">966709747536</string>
+  <string name="google_storage_bucket" translatable="false">coloreo-f27e6.appspot.com</string>
+  <string name="project_id" translatable="false">coloreo-f27e6</string>
+  <string name="google_api_key" translatable="false">AIzaSyBjZmHe5lrr57dQQcaLZbuAm2NO3ntsxmI</string>
+  <string name="google_crash_reporting_api_key" translatable="false">AIzaSyBjZmHe5lrr57dQQcaLZbuAm2NO3ntsxmI</string>
+  <string name="google_app_id" translatable="false">1:966709747536:android:a45594cc8d8313f25fd655</string>
+  <string name="default_web_client_id" translatable="false">966709747536-tp2qugiuvk0a06ls3hhkirkg304es7c6.apps.googleusercontent.com</string>
+</resources>
