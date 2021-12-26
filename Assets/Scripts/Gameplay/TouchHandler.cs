@@ -45,9 +45,12 @@ public class TouchHandler : MonoBehaviour
         t = new Table();
 
         Button btn = GetComponent<Button>();
-        btn = GameObject.Find("NextLevelButton-DEBUG").GetComponent<Button>();
         
-        btn.onClick.AddListener(LevelSucceed);
+        if (GameObject.Find("NextLevelButton-DEBUG")){
+            btn = GameObject.Find("NextLevelButton-DEBUG").GetComponent<Button>();
+            btn.onClick.AddListener(LevelSucceed);
+        }
+        
     }
 
     // Update is called once per frame
@@ -120,53 +123,94 @@ public class TouchHandler : MonoBehaviour
         return result == 0;
     }
     public bool CheckCondition(string winCond, GameObject lm) {
+        int[] colorCountArr = lm.GetComponent<LevelManager>().colorCount;
         string[] cond = winCond.Split(' ');
-        int leftHandSide = 0;
-        int[] colorCount = lm.GetComponent<LevelManager>().colorCount;
-        int rightHandSide;
-        int rightHandSideIndex;
-        int result;
-        result = GetColorCount(cond[cond.Length - 1]);
+        string[] operators = new string[(cond.Length - 1)/2];
+        string[] operands = new string[(cond.Length + 1)/2];
+        
+        // There are (operators + 1) number of final operands
+        List<int> finalOperands = new List<int>();
+        List<string> conditionOperators = new List<string>();
 
-        // if the right hand side is a not a circle, write the number to rightHandSideIndex
-        if ( result == -1){
-            rightHandSideIndex = int.Parse(cond[cond.Length - 1]);
-            rightHandSide = rightHandSideIndex;
+        // Fill out the operands and operators arrays
+        for (int i = 0; i < cond.Length; i++){
+            if (i % 2 == 0){
+                operands[i / 2] = cond[i];
+            }
+            else{
+                operators[(i - 1) / 2] = cond[i];
+            }
         }
-        else{
-            rightHandSideIndex = result;
-            rightHandSide = colorCount[rightHandSideIndex];
-        }
-        // If there is a plus on the left hand side
-        for ( int i = 0; i < (cond.Length - 1)/2; i++) {
-            leftHandSide = leftHandSide + colorCount[GetColorCount(cond[2*i])];
-        }
-        if(cond[cond.Length - 2] == "<") {
-            return leftHandSide < rightHandSide;
-        }
-        if (cond[cond.Length - 2] == ">") {
-            return leftHandSide > rightHandSide;
-        }
-        if (cond[cond.Length - 2] == "=") {
-            return leftHandSide == rightHandSide;
-        }
+        
+        // Initialize leftmost hand side to the first value in the win condition
+        finalOperands.Add(GetColorCount(operands[0], colorCountArr));
 
-        return false;
+        int finalOperandIndex = 0;
+        int conditionOperatorIndex = -1;
+        
+        //x + y = 2
+        while (true){
+            int operatorIndex;
+            //Calculate the final operands
+            for (operatorIndex = conditionOperatorIndex + 1; operatorIndex < operators.Length; operatorIndex++){
+                if (operators[operatorIndex] == "+"){
+                    finalOperands[finalOperandIndex] += GetColorCount(operands[operatorIndex + 1], colorCountArr);
+                }
+                else if (operators[operatorIndex] == "-"){
+                    finalOperands[finalOperandIndex] -= GetColorCount(operands[operatorIndex + 1], colorCountArr);
+                }
+                // if the operator is the condition operator, break the loop, initialize right hand side and swith to it
+                else{
+                    // Add into condition operators list and set the index
+                    conditionOperators.Add(operators[operatorIndex]);
+                    conditionOperatorIndex = operatorIndex;
+                    
+                    // Go to the next finalOperand
+                    finalOperandIndex++;
+                    
+                    //Initialize next operand
+                    finalOperands.Add(GetColorCount(operands[operatorIndex + 1], colorCountArr));
+                    break;
+                }
+            }
+            
+            // if reached the last operator in the win condition
+            if (operatorIndex == operators.Length){
+                break;
+            }
+        }
+        bool winCondSatisfied = true;
+        for (int i = 0; i < conditionOperators.Count; i++){
+            // if the previous condition is satisfied, check the next one, if not; return false
+            if (winCondSatisfied){
+                if (conditionOperators[i] == "<") {
+                    winCondSatisfied = finalOperands[i] < finalOperands[i + 1];
+                }
+                if (conditionOperators[i] == ">") {
+                    winCondSatisfied = finalOperands[i] > finalOperands[i + 1];
+                }
+                if (conditionOperators[i] == "=") {
+                    winCondSatisfied = finalOperands[i] == finalOperands[i + 1];
+                } 
+            }
+        }
+        return winCondSatisfied;
     }
-    public int GetColorCount(string colorCode) {
+    public int GetColorCount(string colorCode, int[] colorCountArr) {
+        
         if ( colorCode == "xx") {
-            return 0;
+            return colorCountArr[0];
         }
         else if (colorCode == "yy") {
-            return 1;
+            return colorCountArr[1];
         }
         else if (colorCode == "zz") {
-            return 2;
+            return colorCountArr[2];
         }
         else if (colorCode == "tt") {
-            return 3;
+            return colorCountArr[3];
         } else {
-            return -1;
+            return int.Parse(colorCode);
         }
     }
     void RemoveSelectionBackground() {

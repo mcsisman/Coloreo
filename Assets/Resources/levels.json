@@ -182,9 +182,9 @@
     },
     {
       "levelNo": 20,
-      "colors": [19, 19, 26, 0],
+      "colors": [17, 17, 30, 0],
       "noOfColors": 3,
-      "variance": 4,
+      "variance": 3,
       "winConds": ["xx + yy < zz"],
       "allowedColors": [1, 2, 3],
       "changeableColor": 3
@@ -390,7 +390,8 @@
       "variance": 2,
       "winConds": ["xx = 16", "yy = 16", "zz = 16"],
       "allowedColors": [1, 2, 3, 4, 5],
-      "changeableColor": 4
+      "changeableColor": 4,
+      "moves": 15
     },
     {
       "levelNo": 43,
@@ -454,7 +455,8 @@
       "variance": 0,
       "winConds": ["xx = zz", "yy = tt"],
       "allowedColors": [1, 2, 3, 4],
-      "changeableColor": 4
+      "changeableColor": 4,
+      "moves": 15
     },
     {
       "levelNo": 50,
@@ -685,7 +687,136 @@
       "allowedColors": [1, 2, 3, 4, 6],
       "changeableColor": 4,
       "moves": 15
+    },
+    {
+      "levelNo": 73,
+      "colors": [5, 1, 5, 1, 0, 52],
+      "noOfColors": 5,
+      "variance": 1,
+      "winConds": ["xx + zz < yy + tt"],
+      "allowedColors": [1, 2, 3, 4, 6],
+      "changeableColor": 4,
+      "moves": 5
+    },
+    {
+      "levelNo": 74,
+      "colors": [4, 4, 4, 0, 0, 52],
+      "noOfColors": 5,
+      "variance": 0,
+      "winConds": ["xx + yy + zz < 3"],
+      "allowedColors": [1, 2, 3, 4, 6],
+      "changeableColor": 4,
+      "moves": 20
+    },
+    {
+      "levelNo": 75,
+      "colors": [3, 3, 3, 51, 4, 0],
+      "noOfColors": 5,
+      "variance": 3,
+      "winConds": ["xx + yy + zz > tt"],
+      "allowedColors": [1, 2, 3, 4, 5],
+      "changeableColor": 4,
+      "moves": 7
+    },
+    {
+      "levelNo": 76,
+      "colors": [14, 5, 14, 23, 4, 4],
+      "noOfColors": 6,
+      "variance": 4,
+      "winConds": ["xx + yy = zz + tt"],
+      "allowedColors": [1, 2, 3, 4, 5, 6],
+      "changeableColor": 4,
+      "moves": 10
+    },
+    {
+      "levelNo": 77,
+      "colors": [9, 1, 1, 1, 2, 50],
+      "noOfColors": 6,
+      "variance": 1,
+      "winConds": ["xx + yy = zz + tt"],
+      "allowedColors": [1, 2, 3, 4, 5, 6],
+      "changeableColor": 4,
+      "moves": 7
+    },
+    {
+      "levelNo": 78,
+      "colors": [15, 41, 0, 0, 4, 4],
+      "noOfColors": 4,
+      "variance": 3,
+      "winConds": ["xx - yy > 15"],
+      "allowedColors": [1, 2, 5, 6],
+      "changeableColor": 2,
+      "moves": 10
+    },
+    {
+      "levelNo": 79,
+      "colors": [0, 0, 3, 9, 2, 50],
+      "noOfColors": 4,
+      "variance": 1,
+      "winConds": ["zz - tt > 3"],
+      "allowedColors": [3, 4, 5, 6],
+      "changeableColor": 2,
+      "moves": 6
+    },
+    {
+      "levelNo": 80,
+      "colors": [3, 0, 0, 9, 2, 50],
+      "noOfColors": 4,
+      "variance": 1,
+      "winConds": ["xx - tt = 2"],
+      "allowedColors": [1, 4, 5, 6],
+      "changeableColor": 2,
+      "moves": 7
+    },
+    {
+      "levelNo": 81,
+      "colors": [0, 15, 45, 0, 4, 0],
+      "noOfColors": 3,
+      "variance": 3,
+      "winConds": ["yy - zz = 16"],
+      "allowedColors": [2, 3, 5],
+      "changeableColor": 2,
+      "moves": 13
+    },
+    {
+      "levelNo": 82,
+      "colors": [2, 3, 1, 8, 0, 50],
+      "noOfColors": 6,
+      "variance": 1,
+      "winConds": ["xx - yy = zz - tt"],
+      "allowedColors": [1, 2, 3, 4, 5, 6],
+      "changeableColor": 4,
+      "moves": 7
+    },
+    {
+      "levelNo": 83,
+      "colors": [7, 7, 14, 32, 4, 0],
+      "noOfColors": 5,
+      "variance": 2,
+      "winConds": ["xx - tt = yy - zz"],
+      "allowedColors": [1, 2, 3, 4, 5],
+      "changeableColor": 4,
+      "moves": 7
+    },
+    {
+      "levelNo": 84,
+      "colors": [4, 4, 4, 4, 0, 48],
+      "noOfColors": 5,
+      "variance": 2,
+      "winConds": ["xx + yy = zz - tt"],
+      "allowedColors": [1, 2, 3, 4, 6],
+      "changeableColor": 4,
+      "moves": 5
+    },
+    {
+      "levelNo": 85,
+      "colors": [20, 20, 11, 0, 2, 11],
+      "noOfColors": 5,
+      "variance": 3,
+      "winConds": ["xx + yy - zz = 0"],
+      "allowedColors": [1, 2, 3, 5, 6],
+      "changeableColor": 3,
+      "moves": 10
     }
-    
   ]
 }

@@ -578,7 +578,7 @@ MonoBehaviour:
   unlockLevelModal: {fileID: 3259699904428614429, guid: 4721035cd610dfa4c86f50268723310e, type: 3}
   lastLevelModal: {fileID: 3259699904428614429, guid: 964b55d5062224b47b65692ef89b1b9e, type: 3}
   colorChangeAnimationDuration: 0.25
-  oneInChanceOfBonusSquare: 36
+  oneInChanceOfBonusSquare: 72
   temporarySizeDuration: 3
   selectionWidth: 3
   colorCount: 
@@ -598,8 +598,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dfca1b523183d164eb7365a6ff509399, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  adUnitAndroid: ca-app-pub-3940256099942544/5224354917
-  adUnitIOS: ca-app-pub-3940256099942544/1712485313
+  adUnitAndroid: ca-app-pub-5104057822603808/5992065881
+  adUnitIOS: ca-app-pub-5104057822603808/3226301746
 --- !u!114 &185381577
 MonoBehaviour:
   m_ObjectHideFlags: 0

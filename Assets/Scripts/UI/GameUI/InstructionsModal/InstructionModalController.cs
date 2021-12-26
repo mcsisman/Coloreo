@@ -44,6 +44,9 @@ public class InstructionModalController : MonoBehaviour{
         else if (tapCounter == 4){
             FifthTap();
         }
+        else if (tapCounter == 5){
+            SixthTap();
+        }
     }
     
     public void FirstTap(){
@@ -65,12 +68,20 @@ public class InstructionModalController : MonoBehaviour{
         tapCounter++;
     }
     public void FourthTap(){
+        
         GameObject.Find("WinCondTextCircle").SetActive(false);
+        GameObject.Find("InstructionText").GetComponent<TextMeshProUGUI>().alignment = TextAlignmentOptions.Left;
+        string instructionText = "<sprite index=0>  - Shrinks the selection area\r\n" + "<sprite index=2>  - Grows the selection area\r\n" + "<sprite index=1>  - Grants three extra moves";
+        GameObject.Find("InstructionText").GetComponent<TextMeshProUGUI>().SetText(instructionText);
+        tapCounter++;
+    }
+    public void FifthTap(){
+        GameObject.Find("InstructionText").GetComponent<TextMeshProUGUI>().alignment = TextAlignmentOptions.Center;
         GameObject.Find("InstructionText").GetComponent<TextMeshProUGUI>().SetText("You are ready! Good luck & Have fun!");
         tapCounter++;
     }
-
-    public void FifthTap(){
+    
+    public void SixthTap(){
         
         Destroy(GameObject.Find("InstructionsModal(Clone)"), 0);
         GameObject.Find("Initiator").GetComponent<TouchHandler>().EnableTouchWithDelay();
