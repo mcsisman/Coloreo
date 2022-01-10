@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -5,8 +6,8 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class InstructionModalController : MonoBehaviour{
-    
-    
+
+    [SerializeField] private GameObject tutorialContainer;
     private int tapCounter = 0;
     
     // Start is called before the first frame update
@@ -14,6 +15,7 @@ public class InstructionModalController : MonoBehaviour{
         DisableTheScreen();
         CreateTapListener();
     }
+    
 
     public void DisableTheScreen(){
         GameObject.Find("Initiator").GetComponent<TouchHandler>().touchDisabled = true;
@@ -47,6 +49,9 @@ public class InstructionModalController : MonoBehaviour{
         else if (tapCounter == 5){
             SixthTap();
         }
+        else if (tapCounter == 6){
+            SeventhTap();
+        }
     }
     
     public void FirstTap(){
@@ -77,12 +82,20 @@ public class InstructionModalController : MonoBehaviour{
     }
     public void FifthTap(){
         GameObject.Find("InstructionText").GetComponent<TextMeshProUGUI>().alignment = TextAlignmentOptions.Center;
-        GameObject.Find("InstructionText").GetComponent<TextMeshProUGUI>().SetText("You are ready! Good luck & Have fun!");
+        tutorialContainer.SetActive(true);
+        tutorialContainer.transform.GetChild(0).gameObject.SetActive(true);
+        GameObject.Find("InstructionText").GetComponent<TextMeshProUGUI>().SetText("Tap on a square to change all selected squares randomly. Selected squares are highlighted.");
         tapCounter++;
     }
     
     public void SixthTap(){
-        
+        tutorialContainer.SetActive(false);
+        tutorialContainer.transform.GetChild(0).gameObject.SetActive(false);
+        GameObject.Find("InstructionText").GetComponent<TextMeshProUGUI>().SetText("You are ready! Good luck & Have fun!");
+        tapCounter++;
+    }
+
+    public void SeventhTap(){
         Destroy(GameObject.Find("InstructionsModal(Clone)"), 0);
         GameObject.Find("Initiator").GetComponent<TouchHandler>().EnableTouchWithDelay();
         tapCounter = 0;

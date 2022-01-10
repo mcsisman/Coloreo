@@ -23,7 +23,7 @@ public class TouchHandler : MonoBehaviour
     private int currentSelectedRow;
     private int currentSelectedColumn;
     public int selectionWidth = 3;
-    private Color selectionColor;
+    [SerializeField] private Color selectionColor;
     private MovesText mt;
     public int[] colorCount;
     public bool touchDisabled = false;
@@ -40,8 +40,6 @@ public class TouchHandler : MonoBehaviour
         winCondText = GameObject.Find("WinCondText").GetComponent<WinCondText>();
         mt = GameObject.Find("MovesText").GetComponent<MovesText>();
         ballCountText = GameObject.Find("BallCountText").GetComponent<BallCountText>();
-        
-        selectionColor = new Color(166 / 255f, 148/255f, 148/255f, .4f);
         t = new Table();
 
         Button btn = GetComponent<Button>();
@@ -300,9 +298,12 @@ public class TouchHandler : MonoBehaviour
     }
     IEnumerator ColorAnimation(GameObject obj, GameObject parent) {
         touchDisabled = true;
+        parent.GetComponent<SpriteRenderer>().color = selectionColor;
+        
         float elapsedTime = 0;
         float waitTime = colorChangeAnimationDuration;
-
+        
+        ;
         int previousColor = parent.GetComponent<BallInformation>().colorEnum;
         int newEnum = 0;
         int newColor = 0;
@@ -310,16 +311,18 @@ public class TouchHandler : MonoBehaviour
         LevelManager lvManager = GameObject.Find("LevelManager").GetComponent<LevelManager>();
         int[] allowedColors = lvManager.lvl.allowedColors;
         int changeableColor = lvManager.lvl.changeableColor;
-
+        
         while (elapsedTime < waitTime) {
             newEnum = Random.Range(0, changeableColor);
             newColor = allowedColors[newEnum] - 1;
             parent.GetComponent<BallInformation>().colorEnum = newColor;
-            obj.GetComponent<SpriteRenderer>().color = Color.Lerp(oldColor, t.GetColorOfIndex(newColor + 1), (elapsedTime / waitTime));
+            
+            obj.GetComponent<SpriteRenderer>().color = t.GetColorOfIndex(newColor + 1);
             
             elapsedTime += Time.deltaTime;
             yield return null;
         }
+        
         LevelManager lm = GameObject.Find("LevelManager").GetComponent<LevelManager>();
         // If bonus square occurs! and if it's not last move
         if (Random.Range(0, oneInChanceOfBonusSquare) == 0 && lm.moves > 1){
@@ -345,6 +348,7 @@ public class TouchHandler : MonoBehaviour
         }
         ballCountText.UpdateColorCountText(text);
         touchDisabled = false;
+        parent.GetComponent<SpriteRenderer>().color = new Color(0.9058824f, 0.9058824f, 0.945098f, 0);
         yield return null;
     }
 

@@ -577,10 +577,11 @@ MonoBehaviour:
   failModal: {fileID: 6562843655554445841, guid: 834f1caabc7924241a0ce50fffcf015a, type: 3}
   unlockLevelModal: {fileID: 3259699904428614429, guid: 4721035cd610dfa4c86f50268723310e, type: 3}
   lastLevelModal: {fileID: 3259699904428614429, guid: 964b55d5062224b47b65692ef89b1b9e, type: 3}
-  colorChangeAnimationDuration: 0.25
+  colorChangeAnimationDuration: 0.5
   oneInChanceOfBonusSquare: 72
   temporarySizeDuration: 3
   selectionWidth: 3
+  selectionColor: {r: 0.468, g: 0.489, b: 0.872, a: 0.16862746}
   colorCount: 
   touchDisabled: 0
   winCondText: {fileID: 0}
